@@ -34,10 +34,10 @@ def class_ip(x):
 
         set_of_ip = set()
 
-        for current_file_name in glob.glob("/Users/mk/Seafile/p4ne_training/config_files/*.txt"):
-            with open(current_file_name) as f:
-                for current_line in f:
-                    addr = class_ip(current_line)
+        for name in rlist:
+            with open(name) as f:
+                for str in f:
+                    addr = class_ip(str)
                     if addr:
                         set_of_ip.add(addr)
 
@@ -61,7 +61,6 @@ def class_ip(x):
                 if gw[0] in ipaddress.IPv4Network(subnet_key):
                     addr_plan[subnet_key].append((str(gw[0]), gw[1]))
 
-print(addr_plan)
 
 
 
