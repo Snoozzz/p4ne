@@ -12,13 +12,13 @@ def class_ip(x):
     a = re.match(r'^ ip address ([0-9]+[.][0-9]+[.][0-9]+[.][0-9]+) ([0-9]+[.][0-9]+[.][0-9]+[.][0-9]+)', x)
     if a:
         return (ipaddress.IPv4Interface(a.group(1) + '/' + a.group(2)), 0)
-    a = re.match(r'^ gateway ([0-9]+[.][0-9]+[.][0-9]+[.][0-9]+)', x)
+    a = re.match(r'^ default-gateway ([0-9]+[.][0-9]+[.][0-9]+[.][0-9]+)', x)
     if a:
         return (ipaddress.IPv4Interface(a.group(1)), 10)
     a = re.match(r'^ standby [0-9]+? ip ([0-9]+[.][0-9]+[.][0-9]+[.][0-9]+)', x)
     if a:
         return (ipaddress.IPv4Interface(a.group(1)), 5)
-    a = re.match(r'route 0\.0\.0\.0 0\.0\.0\.0 ([0-9]+[.][0-9]+[.][0-9]+[.][0-9]+)', x)
+    a = re.match(r'ip route 0\.0\.0\.0 0\.0\.0\.0 ([0-9]+[.][0-9]+[.][0-9]+[.][0-9]+)', x)
     if a:
         return (ipaddress.IPv4Interface(a.group(1)), 10)
     return None
